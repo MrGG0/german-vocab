@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعلم الألمانية | Deutsch Lernen</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-color: #0f172a;
+            --card-bg: #ffffff;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --card-hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            --primary: #6366f1;
+            --secondary: #818cf8;
+            --success: #10b981;
+            --header-bg: rgba(255, 255, 255, 0.85);
+            --border: #e2e8f0;
+            --icon-bg: #f1f5f9;
+            --nav-text: #475569;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-color: #f8fafc;
+            --card-bg: #1e293b;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --card-hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            --primary: #818cf8;
+            --secondary: #6366f1;
+            --success: #10b981;
+            --header-bg: rgba(15, 23, 42, 0.85);
+            --border: #334155;
+            --icon-bg: #334155;
+            --nav-text: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .de-text {
+            font-family: 'Outfit', sans-serif;
+            direction: ltr;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--header-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .studied-btn, .learned-btn {
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .studied-btn {
+            background: var(--primary);
+            box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.4);
+        }
+        .studied-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px -1px rgba(99, 102, 241, 0.5);
+        }
+
+        .learned-btn {
+            background: var(--success);
+            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.4);
+        }
+        .learned-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px -1px rgba(16, 185, 129, 0.5);
+        }
+
+        .theme-toggle {
+            background: var(--icon-bg);
+            border: 1px solid var(--border);
+            color: var(--text-color);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            background: var(--border);
+        }
+
+        .category-nav-wrapper {
+            position: sticky;
+            top: 77px;
+            z-index: 998;
+            background: var(--bg-color);
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 2rem;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-arrow {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-color);
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            cursor: pointer; font-size: 1rem; transition: all 0.3s;
+            flex-shrink: 0;
+        }
+        .nav-arrow:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            background: var(--icon-bg);
+        }
+
+        .category-nav {
+            display: flex;
+            gap: 0.75rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+        }
+
+        .category-nav::-webkit-scrollbar { display: none; }
+
+        .cat-btn {
+            padding: 0.6rem 1.2rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--nav-text);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+        }
+
+        .cat-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .cat-btn.active {
+            background: var(--primary); color: white; border-color: var(--primary);
+            box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.4);
+        }
+
+        main { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+        .category-section { margin-bottom: 4rem; scroll-margin-top: 160px; }
+        .category-title {
+            font-size: 1.8rem; margin-bottom: 1.5rem; display: inline-flex;
+            align-items: center; gap: 0.75rem; padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--primary); font-weight: 700;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .word-card {
+            background: var(--card-bg); border-radius: 24px; padding: 1.5rem 1rem;
+            text-align: center; box-shadow: var(--card-shadow); cursor: pointer;
+            border: 1px solid var(--border); position: relative; overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .word-card:hover { transform: translateY(-8px); box-shadow: var(--card-hover-shadow); border-color: var(--secondary); }
+        .word-card:active { transform: translateY(-2px); }
+
+        .card-actions {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 4px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+            z-index: 2;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            width: calc(100% - 20px);
+        }
+        .word-card:hover .card-actions { opacity: 1; }
+
+        .action-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid var(--border);
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 0.85rem; color: var(--nav-text); cursor: pointer; 
+            transition: all 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        [data-theme="dark"] .action-btn { background: var(--icon-bg); }
+        
+        .action-btn:hover { color: var(--primary); transform: scale(1.15); border-color: var(--primary); }
+        .action-btn.active-btn { color: white; background: var(--primary); border-color: var(--primary); }
+
+        .check-btn.active-check {
+            background: var(--primary) !important;
+            color: white !important;
+            border-color: var(--primary) !important;
+        }
+        .double-check-btn:hover { color: var(--success); border-color: var(--success); }
+        .double-check-btn.active-learned {
+            background: var(--success) !important;
+            color: white !important;
+            border-color: var(--success) !important;
+        }
+
+        .check-btn.active-check i, .double-check-btn.active-learned i {
+            transform: scale(1.1);
+        }
+
+        .card-icon-img {
+            width: 110px; height: 110px; 
+            object-fit: cover; 
+            border-radius: 50%; 
+            margin-top: 2.5rem; 
+            margin-bottom: 1rem;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background-color: var(--icon-bg); 
+            color: transparent; 
+        }
+        .word-card:hover .card-icon-img { transform: scale(1.1) rotate(2deg); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+
+        .article-pill {
+            display: inline-block; padding: 0.25rem 0.75rem; border-radius: 12px;
+            font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem;
+            text-transform: lowercase; letter-spacing: 0.5px;
+        }
+        .article-der { background: #e0f2fe; color: #0284c7; }
+        .article-die { background: #fce7f3; color: #db2777; }
+        .article-das { background: #d1fae5; color: #059669; }
+        [data-theme="dark"] .article-der { background: #0c4a6e; color: #38bdf8; }
+        [data-theme="dark"] .article-die { background: #831843; color: #f472b6; }
+        [data-theme="dark"] .article-das { background: #064e3b; color: #34d399; }
+
+        .word-text { font-size: 1.25rem; font-weight: 700; color: var(--text-color); margin-top: 5px; }
+        
+        .german-sentence {
+            font-size: 0.95rem; color: var(--primary); margin-top: 10px; font-weight: 600; line-height: 1.4;
+            border-top: 1px dashed var(--border); padding-top: 10px; width: 100%; animation: fadeIn 0.3s ease-out;
+        }
+
+        .arabic-translation {
+            margin-top: 0.75rem; font-weight: 700;
+            color: var(--secondary); animation: fadeIn 0.3s ease-out;
+            border-top: 1px dashed var(--border);
+            padding-top: 0.5rem; width: 100%;
+        }
+        
+        .trans-word { font-size: 1.15rem; }
+        .trans-sentence { font-size: 0.9rem; margin-top: 5px; color: var(--text-color); font-weight: 500; }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); z-index: 9999;
+            display: none; justify-content: center; align-items: center;
+            backdrop-filter: blur(5px);
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content {
+            background: var(--bg-color); width: 95%; max-width: 1200px;
+            height: 85vh; border-radius: 20px; display: flex; flex-direction: column;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden; transform: translateY(20px); transition: transform 0.3s;
+        }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        
+        .modal-header {
+            padding: 1.5rem 2rem; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+            background: var(--card-bg);
+        }
+        .modal-header h2 { color: var(--text-color); font-size: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        
+        .header-learned-icon { color: var(--success); }
+        .header-studied-icon { color: var(--primary); }
+
+        .close-modal {
+            background: var(--icon-bg); border: 1px solid var(--border); font-size: 1.2rem;
+            color: var(--text-color); cursor: pointer; transition: all 0.3s;
+            width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+        }
+        .close-modal:hover { color: white; background: #ef4444; border-color: #ef4444; }
+        .modal-body {
+            padding: 2rem; overflow-y: auto; flex: 1;
+        }
+        
+        .empty-modal {
+            grid-column: 1 / -1; text-align: center; color: var(--nav-text); 
+            font-size: 1.2rem; padding: 4rem 0; display: flex; flex-direction: column; align-items: center; gap: 1rem;
+        }
+
+        @keyframes pop { 0% { transform: scale(1); } 50% { transform: scale(0.92); } 100% { transform: scale(1); } }
+        .anim-pop { animation: pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) {
+            .cards-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+            .word-text { font-size: 1.15rem; }
+            .card-icon-img { width: 90px; height: 90px; margin-top: 2.5rem; }
+            header { padding: 1rem; flex-direction: column; gap: 1rem; }
+            .header-actions { justify-content: center; }
+            .category-nav-wrapper { padding: 0.75rem 0.5rem; top: 155px; }
+            main { padding: 1rem; }
+            .category-section { scroll-margin-top: 220px; }
+            .card-actions { opacity: 1; }
+            .modal-content { height: 95vh; width: 100%; border-radius: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><i class="fas fa-graduation-cap"></i> Deutsch Lernen</h1>
+        <div class="header-actions">
+            <button class="studied-btn" id="studied-btn" onclick="openStudiedModal()">
+                <i class="fas fa-check"></i> المحفوظة (<span id="studied-count">0</span>)
+            </button>
+            <button class="learned-btn" id="learned-btn" onclick="openLearnedModal()">
+                <i class="fas fa-check-double"></i> تم التعلم (<span id="learned-count">0</span>)
+            </button>
+            <button class="theme-toggle" id="theme-toggle" title="تغيير المظهر">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="category-nav-wrapper">
+        <button class="nav-arrow" onclick="scrollNav(-250)"><i class="fas fa-chevron-right"></i></button>
+        <div class="category-nav" id="category-nav"></div>
+        <button class="nav-arrow" onclick="scrollNav(250)"><i class="fas fa-chevron-left"></i></button>
+    </div>
+
+    <main id="main-content"></main>
+
+    <div class="modal-overlay" id="studied-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-check header-studied-icon"></i> الكلمات المحفوظة للمراجعة</h2>
+                <button class="close-modal" onclick="closeStudiedModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body cards-grid" id="studied-grid"></div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="learned-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-check-double header-learned-icon"></i> الكلمات التي تم تعلمها (مخفية)</h2>
+                <button class="close-modal" onclick="closeLearnedModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body cards-grid" id="learned-grid"></div>
+        </div>
+    </div>
+
+    <script>
+        const dictionary = [
+    {
+        "id": "obst", "name": "Obst", "icon": "fa-apple-alt",
+        "words": [
+            "der Apfel|apple fruit|تفاحة|Ich esse jeden Tag einen Apfel.|أنا باكل تفاحة كل يوم.",
+            "die Banane|banana fruit|موزة|Die Banane ist sehr süß.|الموزة دي مسكرة جداً.",
+            "die Erdbeere|strawberry|فراولة|Erdbeeren sind lecker im Sommer.|الفراولة طعمها حلو في الصيف.",
+            "die Zitrone|fresh yellow lemon|لمونة|Die Zitrone ist sehr sauer.|اللمونة دي مززة (حامضة) جداً.",
+            "die Orange|orange fruit|برتقانة|Ich trinke gerne Orangensaft.|أنا بحب أشرب عصير برتقان.",
+            "die Weintraube|grapes|عنب|Diese Weintrauben sind frisch.|العنب ده طازة.",
+            "die Wassermelone|watermelon|بطيخ|Wassermelone ist mein Lieblingsobst.|البطيخ ده فاكهتي المفضلة.",
+            "die Pfirsich|peach fruit|خوخ|Der Pfirsich ist weich und saftig.|الخوخ طري ومليان مية.",
+            "die Kirsche|cherry fruit|كريز|Ich habe ein Kilo Kirschen gekauft.|أنا اشتريت كيلو كريز.",
+            "die Pflaume|plum fruit|برقوق|Pflaumen sind gut für die Verdauung.|البرقوق مفيد للهضم.",
+            "die Ananas|pineapple|أناناس|Die Ananas schmeckt exotisch.|الأناناس طعمه استوائي.",
+            "die Mango|mango fruit|مانجا|Ich liebe den Geschmack von Mango.|أنا بعشق طعم المانجا.",
+            "die Blaubeere|blueberry|توت أزرق|Blaubeeren passen gut zum Joghurt.|التوت الأزرق بيبقى حلو مع الزبادي.",
+            "die Himbeere|raspberry|توت أحمر|Himbeeren wachsen im Garten.|التوت الأحمر بيكبر في الجنينة.",
+            "die Birne|pear fruit|كمثرى|Die Birne ist reif und süß.|الكمثرى مستوية ومسكرة."
+        ]
+    },
+    {
+        "id": "gemuese", "name": "Gemüse", "icon": "fa-carrot",
+        "words": [
+            "die Tomate|tomato vegetable|طماطم|Ich schneide die Tomaten für den Salat.|أنا بقطع الطماطم عشان السلطة.",
+            "die Gurke|cucumber vegetable|خيار|Die Gurke besteht fast nur aus Wasser.|الخيار أغلبه مية.",
+            "die Kartoffel|potato|بطاطس|Wir essen heute Kartoffeln mit Fleisch.|إحنا هناكل النهاردة بطاطس باللحمة.",
+            "die Zwiebel|onion vegetable|بصل|Beim Zwiebelschneiden muss ich weinen.|وانا بقطع البصل بعيط.",
+            "der Knoblauch|garlic vegetable|توم|Knoblauch gibt dem Essen viel Geschmack.|التوم بيدي طعم حلو للأكل.",
+            "die Karotte|carrot vegetable|جزر|Karotten sind gut für die Augen.|الجزر مفيد للنظر.",
+            "der Salat|lettuce vegetable|خس / سلطة|Ich wasche den Salat gründlich.|أنا بغسل الخس كويس جداً.",
+            "der Paprika|bell pepper vegetable|فلفل|Ich mag roten Paprika lieber als grünen.|أنا بحب الفلفل الأحمر أكتر من الأخضر.",
+            "der Brokkoli|broccoli vegetable|بروكلي|Brokkoli ist sehr gesund.|البروكلي صحي جداً.",
+            "der Blumenkohl|cauliflower vegetable|قرنبيط|Meine Oma kocht oft Blumenkohl.|جدتي بتطبخ قرنبيط كتير.",
+            "der Spinat|spinach leaves|سبانخ|Spinat macht stark.|السبانخ بتخليك قوي.",
+            "die Pilze|mushroom vegetable|مشروم|Wir sammeln Pilze im Wald.|إحنا بنجمع مشروم من الغابة.",
+            "die Zucchini|zucchini vegetable|كوسة|Ich brate die Zucchini in der Pfanne.|أنا بقلي الكوسة في الطاسة.",
+            "die Erbse|green peas vegetable|بسلة|Erbsen wachsen schnell.|البسلة بتكبر بسرعة.",
+            "die Bohne|green beans vegetable|فاصوليا|Grüne Bohnen müssen gekocht werden.|الفاصوليا الخضرا لازم تتسلق."
+        ]
+    },
+    {
+        "id": "lebensmittel", "name": "Lebensmittel", "icon": "fa-bread-slice",
+        "words": [
+            "das Brot|bread loaf|عيش|Kannst du bitte frisches Brot kaufen?|ممكن تشتري عيش طازة لو سمحت؟",
+            "die Milch|glass of milk|لبن|Ich trinke meinen Kaffee mit Milch.|أنا بشرب القهوة بتاعتي بلبن.",
+            "das Ei|chicken egg|بيضة|Ich esse jeden Morgen ein Ei.|أنا باكل بيضة كل يوم الصبح.",
+            "der Käse|cheese block|جبنة|Dieser Käse kommt aus der Schweiz.|الجبنة دي جاية من سويسرا.",
+            "die Butter|butter block|زبدة|Ich streiche Butter auf das Brot.|أنا بدهن الزبدة على العيش.",
+            "der Joghurt|yogurt cup|زبادي|Joghurt mit Honig schmeckt gut.|الزبادي بالعسل طعمه حلو.",
+            "das Fleisch|raw meat|لحمة|Wir grillen heute Fleisch.|إحنا هنشوي لحمة النهاردة.",
+            "der Fisch|fresh fish|سمك|Freitags essen wir immer Fisch.|إحنا دايماً بناكل سمك يوم الجمعة.",
+            "das Hähnchen|roasted chicken|فراخ|Das Hähnchen im Ofen ist fertig.|الفراخ اللي في الفرن استوت.",
+            "der Reis|bowl of white rice|رز|Reis ist ein wichtiges Nahrungsmittel.|الرز ده أكل أساسي.",
+            "die Nudeln|cooked pasta spaghetti|مكرونة|Ich liebe italienische Nudeln.|أنا بعشق المكرونة الإيطالي.",
+            "das Mehl|flour powder|دقيق|Wir brauchen Mehl für den Kuchen.|إحنا محتاجين دقيق عشان الكيكة.",
+            "der Zucker|white sugar|سكر|Wie viel Zucker nimmst du in den Tee?|بتاخد سكر قد إيه في الشاي؟",
+            "das Salz|white salt|ملح|Das Essen braucht mehr Salz.|الأكل محتاج ملح أكتر.",
+            "das Öl|cooking oil bottle|زيت|Braten Sie das Fleisch in etwas Öl an.|اقلي اللحمة في شوية زيت.",
+            "der Kaffee|cup of coffee|قهوة|Ich brauche jetzt eine Tasse Kaffee.|أنا محتاج فنجان قهوة دلوقتي.",
+            "der Tee|cup of tea|شاي|Trinkst du lieber schwarzen oder grünen Tee?|بتحب تشرب شاي أسود ولا أخضر؟",
+            "das Wasser|glass of water|ميه|Bitte bringen Sie mir eine Flasche Wasser.|لو سمحت هات لي إزازة مية.",
+            "der Saft|glass of orange juice|عصير|Orangensaft ist voller Vitamine.|عصير البرتقان مليان فيتامينات.",
+            "die Schokolade|chocolate bar|شوكولاتة|Kinder lieben Schokolade.|الأطفال بيموتوا في الشوكولاتة."
+        ]
+    },
+    {
+        "id": "koerper", "name": "der Körper", "icon": "fa-child",
+        "words": [
+            "der Kopf|human head|راس|Mein Kopf tut weh.|راسي بتوجعني.",
+            "das Haar|human hair|شعر|Sie hat langes, blondes Haar.|هي شعرها طويل وأشقر.",
+            "das Auge|human eye|عين|Er hat blaue Augen.|هو عينيه زرقا.",
+            "das Ohr|human ear|ودن|Hältst du dir bitte die Ohren zu?|ممكن تسد ودانك لو سمحت؟",
+            "die Nase|human nose|مناخير|Der Hund hat eine gute Nase.|الكلب مناخيره بتشم كويس.",
+            "der Mund|human mouth lips|بؤ|Mach bitte den Mund auf.|افتح بؤك لو سمحت.",
+            "der Zahn|human tooth|سنة|Ich muss zum Zahnarzt gehen.|أنا لازم أروح لدكتور السنان.",
+            "der Hals|human neck|رقبة|Mein Hals ist etwas steif.|رقبتي مخشبة شوية.",
+            "die Schulter|human shoulder|كتف|Ich habe Schmerzen in der rechten Schulter.|عندي وجع في كتفي اليمين.",
+            "der Arm|human arm|دراع|Er hat sich den Arm gebrochen.|هو دراعه اتكسر.",
+            "die Hand|human hand|إيد|Gib mir bitte deine Hand.|هات إيدك لو سمحت.",
+            "der Finger|human finger|صباع|Ich habe mir in den Finger geschnitten.|أنا عورت صباعي.",
+            "der Bauch|human stomach belly|بطن|Nach dem Essen ist mein Bauch voll.|بعد الأكل بطني اتملت.",
+            "der Rücken|human back|ضهر|Schweres Heben ist schlecht für den Rücken.|شيل الحاجات التقيلة مضر بالضهر.",
+            "das Bein|human leg|رجل|Ich bin den ganzen Tag auf den Beinen.|أنا واقف على رجلي طول اليوم.",
+            "der Fuß|human foot|قدم|Meine Füße sind kalt.|رجلي ساقعة.",
+            "der Zeh|human toe|صباع الرجل|Ich bin mit dem Zeh gegen den Tisch gestoßen.|أنا خبطت صباع رجلي في الترابيزة.",
+            "das Knie|human knee|ركبة|Beim Laufen tut mein Knie weh.|وانا بجري ركبتي بتوجعني.",
+            "das Herz|human heart anatomical|قلب|Das Herz pumpt Blut durch den Körper.|القلب بيضخ الدم في الجسم.",
+            "die Haut|human skin|جلد|Im Winter ist meine Haut sehr trocken.|في الشتا جلدي بيكون ناشف جداً."
+        ]
+    },
+    {
+        "id": "gesundheit", "name": "die Gesundheit", "icon": "fa-heartbeat",
+        "words": [
+            "die Krankheiten|sick person in bed|أمراض|Gegen manche Krankheiten gibt es Impfungen.|في تطعيمات ضد بعض الأمراض.",
+            "der Schmerz|person in physical pain|وجع|Der Schmerz ist unerträglich.|الوجع ده مش قادر أستحمله.",
+            "die Kopfschmerzen|person with headache|صداع|Ich habe schreckliche Kopfschmerzen.|أنا عندي صداع فظيع.",
+            "die Halsschmerzen|person with sore throat|وجع زور|Tee mit Honig hilft bei Halsschmerzen.|الشاي بالعسل مفيد لوجع الزور.",
+            "die Bauchschmerzen|person with stomach ache|مغص|Das Kind weint, weil es Bauchschmerzen hat.|الطفل بيعيط عشان عنده مغص.",
+            "die Zahnschmerzen|person with toothache|وجع سنان|Zahnschmerzen sind das Schlimmste.|وجع السنان ده أسوأ حاجة.",
+            "das Fieber|thermometer high fever|سخونية|Er hat hohes Fieber und muss im Bett bleiben.|هو عنده سخونية عالية ولازم يرتاح في السرير.",
+            "der Husten|person coughing|كحة|Dieser Husten geht einfach nicht weg.|الكحة دي مش راضية تروح.",
+            "der Schnupfen|person sneezing|رشح|Mit einem Schnupfen schmeckt das Essen nicht.|مع الرشح الأكل ملوش طعم.",
+            "die Grippe|flu virus microscopic|إنفلونزا|Jeden Winter bekommen viele Leute die Grippe.|كل شتا ناس كتير بيجيلها إنفلونزا.",
+            "die Erkältung|person with winter cold|برد|Zieh dich warm an, sonst bekommst du eine Erkältung.|إلبس تقيل عشان متاخدش برد.",
+            "die Wunde|skin wound|جرح|Die Wunde muss desinfiziert werden.|الجرح ده لازم يتطهر.",
+            "die Allergie|person with skin allergy|حساسية|Ich habe eine Allergie gegen Katzen.|أنا عندي حساسية من القطط.",
+            "der Schwindel|dizzy person|دوخة|Wenn ich schnell aufstehe, habe ich Schwindel.|لما بقوم بسرعة بحس بدوخة.",
+            "die Müdigkeit|tired sleepy person|إرهاق|Nach der Arbeit spüre ich große Müdigkeit.|بعد الشغل بحس بإرهاق شديد.",
+            "der Sonnenbrand|sunburn on skin|حرق شمس|Ohne Sonnencreme bekommt man schnell einen Sonnenbrand.|من غير صن بلوك هتتلسع من الشمس."
+        ]
+    },
+    {
+        "id": "apotheke", "name": "Apotheke", "icon": "fa-prescription-bottle-alt",
+        "words": [
+            "die Apotheke|pharmacy store front|صيدلية|Die Apotheke um die Ecke hat nachts geöffnet.|الصيدلية اللي على الناصية بتفتح بالليل.",
+            "das Medikament|medicine pills|دوا|Nimm das Medikament nach dem Essen ein.|خد الدوا ده بعد الأكل.",
+            "die Medizin|medicine bottles|طب / دوا|Er studiert Medizin an der Universität.|هو بيدرس طب في الجامعة.",
+            "die Tablette|medical tablet|برشامة|Diese Tablette hilft gegen Schmerzen.|البرشامة دي بتسكن الوجع.",
+            "die Pille|medical pill capsule|حباية|Vergiss nicht, deine Pille zu nehmen.|ماتنساش تاخد الحباية بتاعتك.",
+            "der Hustensaft|cough syrup bottle|دوا كحة|Der Hustensaft schmeckt ein bisschen süß.|دوا الكحة طعمه مسكر شوية.",
+            "die Salbe|medical ointment tube|مرهم|Trage die Salbe zweimal täglich auf.|ادهن المرهم ده مرتين في اليوم.",
+            "das Pflaster|adhesive plaster|لزقة جروح|Hast du ein Pflaster für mich?|معاك لزقة جروح؟",
+            "die Binde|medical bandage roll|شاش|Der Arzt legt eine neue Binde an.|الدكتور بيلف شاش جديد.",
+            "der Verband|medical sling bandage|رباط|Der Verband muss trocken bleiben.|الرباط ده لازم يفضل ناشف.",
+            "das Vitamin|vitamin supplement bottle|فيتامين|Vitamin C ist gut für das Immunsystem.|فيتامين سي مفيد للمناعة.",
+            "das Rezept|medical prescription paper|روشتة|Dieses Medikament gibt es nur auf Rezept.|الدوا ده مبيصرفش غير بروشتة.",
+            "das Thermometer|medical thermometer|ترمومتر|Wir brauchen ein Thermometer, um Fieber zu messen.|إحنا محتاجين ترمومتر عشان نقيس السخونية.",
+            "die Creme|medical cream jar|كريم|Diese Creme macht die Haut weich.|الكريم ده بيخلي الجلد ناعم.",
+            "das Taschentuch|paper tissue|منديل|Hast du ein Papiertaschentuch für mich?|معاك منديل ورق؟"
+        ]
+    },
+    {
+        "id": "universitaet", "name": "Universität", "icon": "fa-university",
+        "words": [
+            "die Universität|university building|جامعة|Die Universität Leipzig ist sehr alt.|جامعة لايبزيج قديمة جداً.",
+            "die Hochschule|college campus|معهد عالي|An dieser Hochschule kann man Technik studieren.|المعهد ده ممكن تدرس فيه هندسة.",
+            "der Student|male university student|طالب|Der Student lernt für die Prüfung.|الطالب بيذاكر للامتحان.",
+            "die Studentin|female university student|طالبة|Die Studentin schreibt eine Hausarbeit.|الطالبة بتكتب بحث.",
+            "der Professor|university professor|دكتور جامعة|Der Professor hält einen interessanten Vortrag.|دكتور الجامعة بيدي محاضرة ممتعة.",
+            "die Professorin|female university professor|دكتورة جامعة|Die Professorin erklärt das Thema sehr gut.|الدكتورة بتشرح الموضوع كويس جداً.",
+            "das Studium|studying books|دراسة|Das Medizinstudium dauert viele Jahre.|دراسة الطب بتاخد سنين كتير.",
+            "studieren|student studying|يدرس|Ich möchte in Deutschland studieren.|أنا عايز أدرس في ألمانيا.",
+            "der Campus|university campus grounds|حرم جامعي|Der Campus ist sehr grün und groß.|الحرم الجامعي واسع ومليان خضرة.",
+            "der Hörsaal|empty university lecture hall|مدرج|Der Hörsaal ist heute komplett voll.|المدرج مليان على آخره النهاردة.",
+            "die Vorlesung|university lecture|محاضرة|Die Vorlesung beginnt um acht Uhr.|المحاضرة هتبدأ الساعة 8.",
+            "das Seminar|training seminar|سكشن / ندوة|In diesem Seminar diskutieren wir viel.|إحنا بنتناقش كتير في السكشن ده.",
+            "die Übung|student exercise book|تمرين|Wir machen eine Übung für die Grammatik.|إحنا بنحل تمرين على الجرامر.",
+            "der Kurs|university course material|كورس|Ich besuche einen Sprachkurs an der Uni.|أنا باخد كورس لغة في الجامعة.",
+            "das Semester|academic calendar|تيرم|Das nächste Semester beginnt im Oktober.|التيرم الجاي هيبدأ في أكتوبر.",
+            "die Semesterferien|holiday vacation beach|أجازة التيرم|In den Semesterferien fahre ich nach Hause.|أنا هسافر لبيتنا في أجازة التيرم.",
+            "der Stundenplan|class schedule|جدول المحاضرات|Mein Stundenplan für dieses Semester ist sehr voll.|جدولي التيرم ده زحمة جداً.",
+            "die Anmeldung|registration form document|تسجيل|Die Anmeldung für den Kurs ist ab morgen möglich.|التسجيل في الكورس هيفتح من بكرة.",
+            "die Einschreibung|university enrollment|قيد|Die Einschreibung findet im Sekretariat statt.|عملية القيد بتتعمل في شؤون الطلبة.",
+            "die Matrikelnummer|student id number card|رقم الجلوس|Bitte schreiben Sie Ihre Matrikelnummer auf das Blatt.|لو سمحت اكتب رقم جلوسك على الورقة.",
+            "der Studentenausweis|student id card|كارنيه|Ohne Studentenausweis gibt es keinen Rabatt.|مفيش خصم من غير كارنيه الكلية.",
+            "die Mensa|university cafeteria|كافتيريا|Das Essen in der Mensa ist günstig.|الأكل في كافتيريا الكلية رخيص.",
+            "die Bibliothek|library interior books|مكتبة|In der Bibliothek muss man leise sein.|لازم تكون هادي في المكتبة.",
+            "das Lehrbuch|study textbook|كتاب المادة|Wir müssen dieses Lehrbuch kaufen.|إحنا لازم نشتري كتاب المادة ده.",
+            "das Fach|study folder|مادة|Mathematik ist mein bestes Fach.|الرياضيات دي أكتر مادة أنا شاطر فيها.",
+            "der Studiengang|university degree certificate|تخصص|Welchen Studiengang hast du gewählt?|إنت اخترت تخصص إيه؟",
+            "der Abschluss|graduation diploma|تخرج|Nach dem Abschluss suche ich einen Job.|بعد التخرج هدور على شغل.",
+            "der Bachelor|bachelor degree certificate|بكالوريوس|Er macht dieses Jahr seinen Bachelor.|هو هياخد البكالوريوس السنة دي.",
+            "der Master|master degree certificate|ماجستير|Für den Master muss ich noch zwei Jahre studieren.|محتاج أدرس سنتين كمان عشان الماجستير.",
+            "die Prüfung|written exam paper|امتحان|Ich habe Angst vor der mündlichen Prüfung.|أنا خايف من الامتحان الشفوي.",
+            "die Klausur|written test paper|امتحان تحريري|Die Klausur war wirklich sehr schwer.|الامتحان التحريري كان صعب جداً بصراحة.",
+            "das Examen|final exam paper|امتحان نهائي|Das Staatsexamen ist der wichtigste Test.|الامتحان النهائي ده أهم اختبار.",
+            "bestehen|exam passed grade A|ينجح|Ich hoffe, dass ich die Prüfung bestehe.|أتمنى إني أنجح في الامتحان.",
+            "durchfallen|failed exam paper F grade|يسقط|Wenn du nicht lernst, wirst du durchfallen.|لو مذاكرتش، هتسقط.",
+            "die Note|exam grade paper|درجة / تقدير|Ich habe eine sehr gute Note bekommen.|أنا جبت درجة كويسة جداً.",
+            "das Zeugnis|school certificate|شهادة|Am Ende des Jahres bekommen wir unser Zeugnis.|في آخر السنة بناخد الشهادة بتاعتنا.",
+            "die Hausarbeit|homework paper|بحث / تكليف|Ich muss dieses Wochenende eine Hausarbeit schreiben.|لازم أكتب بحث الويك إند ده.",
+            "die Abschlussarbeit|thesis document|مشروع تخرج|Meine Abschlussarbeit hat über 50 Seiten.|مشروع التخرج بتاعي معدي الـ 50 صفحة.",
+            "das Stipendium|scholarship money|منحة|Er studiert mit einem Stipendium in Berlin.|هو بيدرس بمنحة في برلين.",
+            "die Gebühr|tuition fee money|مصاريف|Die Universitäten verlangen eine kleine Gebühr.|الجامعات بتطلب مصاريف بسيطة.",
+            "das Institut|institute building|معهد|Das Institut für Physik ist neben der Bibliothek.|معهد الفيزياء جنب المكتبة.",
+            "die Fakultät|university faculty building|كلية|Die medizinische Fakultät hat einen guten Ruf.|كلية الطب دي سمعتها كويسة.",
+            "das Auslandssemester|student travelling abroad|تيرم بره|Ein Auslandssemester ist eine tolle Erfahrung.|انك تدرس تيرم بره دي تجربة عظيمة.",
+            "das Praktikum|office internship|تدريب|Ich mache ein Praktikum in einem Krankenhaus.|أنا بتدرب في مستشفى.",
+            "der Credit Point|gold star credit|ساعة معتمدة|Für diesen Kurs gibt es fünf Credit Points.|الكورس ده عليه 5 ساعات معتمدة.",
+            "die Forschung|scientific research lab|بحث علمي|Forschung bringt die Gesellschaft voran.|البحث العلمي بيطور المجتمع.",
+            "die Wissenschaft|science genetics dna|علم|Die Wissenschaft sucht nach neuen Lösungen.|العلم بيدور على حلول جديدة.",
+            "der Wissenschaftler|scientist working in lab|عالم|Albert Einstein war ein berühmter Wissenschaftler.|ألبرت أينشتاين كان عالم مشهور.",
+            "die Absolventen|university graduates throwing caps|خريجين|Die Absolventen feiern heute ihren Abschluss.|الخريجين بيحتفلوا بتخرجهم النهاردة.",
+            "die Bewerbung|job application resume|تقديم|Ich habe meine Bewerbung an die Universität geschickt.|أنا بعت ورق التقديم بتاعي للجامعة."
+        ]
+    },
+    {
+        "id": "restaurant", "name": "Restaurant & Café", "icon": "fa-utensils",
+        "words": [
+            "die Speisekarte|restaurant menu card|منيو|Könnte ich bitte die Speisekarte sehen?|ممكن أشوف المنيو لو سمحت؟",
+            "der Kellner|waiter in restaurant|جرسون|Der Kellner bringt uns die Getränke.|الجرسون هيجيب لنا المشروبات.",
+            "die Kellnerin|waitress in restaurant|جرسونة|Die Kellnerin war sehr freundlich.|الجرسونة كانت ذوق جداً.",
+            "die Bestellung|restaurant order food|طلب|Wir warten noch auf unsere Bestellung.|إحنا لسة مستنيين الطلب بتاعنا.",
+            "die Rechnung|restaurant bill receipt|حساب|Die Rechnung, bitte!|الحساب لو سمحت!",
+            "das Trinkgeld|restaurant tip money|بقشيش|Wir haben zehn Prozent Trinkgeld gegeben.|إحنا سيبنا بقشيش 10 في المية.",
+            "das Frühstück|breakfast food plate|فطار|Das Frühstück ist die wichtigste Mahlzeit.|الفطار ده أهم وجبة.",
+            "das Mittagessen|lunch food plate|غدا|Was gibt es heute zum Mittagessen?|هنتغدى إيه النهاردة؟",
+            "das Abendessen|dinner food plate|عشا|Wir gehen heute ins Restaurant zum Abendessen.|إحنا هنروح نتعشى في مطعم النهاردة.",
+            "der Tisch|restaurant table|ترابيزة|Haben Sie einen Tisch für zwei Personen reserviert?|هل حجزت ترابيزة لفردين؟",
+            "der Stuhl|restaurant chair|كرسي|Dieser Stuhl ist sehr bequem.|الكرسي ده مريح جداً.",
+            "das Messer|dining knife|سكينة|Ich brauche ein scharfes Messer für das Fleisch.|أنا محتاج سكينة حامية عشان اللحمة.",
+            "die Gabel|dining fork|شوكة|Könnten Sie mir eine saubere Gabel bringen?|ممكن تجيب لي شوكة نضيفة؟",
+            "der Löffel|dining spoon|معلقة|Ich esse die Suppe mit dem Löffel.|أنا باكل الشوربة بالمعلقة.",
+            "der Teller|dining plate|طبق|Der Teller ist sehr heiß, Vorsicht!|الطبق سخن جداً، خلي بالك!",
+            "das Glas|glass of water|كوباية|Darf ich bitte noch ein Glas Wasser haben?|ممكن كوباية مية كمان لو سمحت؟",
+            "die Tasse|coffee cup|فنجان|Ich hätte gern eine Tasse Kaffee.|أنا عايز فنجان قهوة.",
+            "die Serviette|table napkin|منديل سفرة|Da liegt ein Fleck, gib mir mal die Serviette.|في بقعة هنا، هات لي المنديل.",
+            "das Wasser|glass of water|مية|Trinken Sie genug Wasser jeden Tag.|اشرب مية كفاية كل يوم.",
+            "der Saft|glass of juice|عصير|Haben Sie frischen Orangensaft?|عندكم عصير برتقان فريش؟",
+            "der Kaffee|cup of coffee|قهوة|Ein Kaffee am Morgen macht mich wach.|فنجان القهوة الصبح بيفوقني.",
+            "der Tee|cup of tea|شاي|Ich trinke abends gerne Pfefferminztee.|أنا بحب أشرب شاي نعناع بالليل.",
+            "die Milch|glass of milk|لبن|Möchten Sie Milch und Zucker zum Kaffee?|عايز لبن وسكر مع القهوة؟",
+            "das Bier|glass of beer|بيرة|Ein kaltes Bier im Sommer ist erfrischend.|البيرة الساقعة في الصيف بتنعش.",
+            "der Wein|glass of wine|نبيذ|Rotwein passt gut zu Fleischgerichten.|النبيذ الأحمر بيمشي حلو مع اللحمة.",
+            "die Suppe|bowl of soup|شوربة|Die Suppe ist heute etwas zu salzig.|الشوربة مالحة شوية النهاردة.",
+            "der Salat|bowl of salad|سلطة|Als Vorspeise nehme ich einen gemischten Salat.|هاخد سلطة مشكلة كبداية (مقبلات).",
+            "das Fleisch|cooked meat dish|لحمة|Das Fleisch ist perfekt gebraten.|اللحمة دي مستوية صح.",
+            "der Fisch|cooked fish dish|سمك|Der gegrillte Fisch schmeckt hervorragend.|السمك المشوي طعمه يجنن.",
+            "das Hähnchen|roasted chicken|فراخ|Ich bestelle Hähnchen mit Pommes.|أنا هطلب فراخ مع بطاطس محمرة.",
+            "die Nudeln|cooked pasta plate|مكرونة|Die Nudeln sind hausgemacht.|المكرونة دي معمولة في البيت.",
+            "der Reis|bowl of cooked rice|رز|Zum Curry essen wir viel Reis.|إحنا بناكل رز كتير مع الكاري.",
+            "das Gemüse|cooked vegetables|خضار|Kinder sollten mehr Gemüse essen.|الأطفال لازم ياكلوا خضار أكتر.",
+            "das Obst|fresh fruit bowl|فاكهة|Zum Nachtisch gibt es frisches Obst.|عندنا فاكهة فريش للتحلية.",
+            "das Dessert|sweet dessert cake|حلو / ديزيرت|Haben Sie noch Platz für ein Dessert?|عندك مكان للحلو؟",
+            "der Kuchen|piece of cake|كيكة|Meine Mutter backt den besten Kuchen.|أمي بتعمل أحلى كيكة.",
+            "das Eis|ice cream cone|آيس كريم|Zwei Kugeln Eis mit Sahne, bitte.|عايز بٌلتين آيس كريم بالكريمة لو سمحت.",
+            "das Brot|bread loaf|عيش|Darf ich noch etwas Brot haben?|ممكن حتة عيش كمان؟",
+            "die Butter|butter block|زبدة|Butter macht das Brot besser.|الزبدة بتخلي طعم العيش أحلى.",
+            "das Salz|salt shaker|ملح|Kannst du mir bitte das Salz reichen?|ممكن تناولني الملح لو سمحت؟",
+            "der Pfeffer|black pepper shaker|فلفل أسود|Ich brauche Pfeffer für mein Essen.|محتاج فلفل أسود للأكل بتاعي.",
+            "der Zucker|sugar bowl|سكر|Der Tee ist ohne Zucker sehr bitter.|الشاي من غير سكر بيبقى مر جداً.",
+            "scharf|spicy chili pepper|حراق|Dieses indische Gericht ist extrem scharf.|الأكلة الهندي دي حراقة جداً.",
+            "süß|sweet candy|مسكر|Die Torte ist mir ein bisschen zu süß.|التورتة دي مسكرة بزيادة بالنسبة لي.",
+            "salzig|salty pretzel|مالح|Die Chips sind sehr salzig.|الشيبسي ده مالح أوي.",
+            "lecker|delicious food face|لذيذ|Das Essen in diesem Restaurant ist immer lecker.|الأكل في المطعم ده دايماً لذيذ.",
+            "bestellen|ordering food restaurant|يطلب|Sind Sie bereit zu bestellen?|جاهز تطلب؟",
+            "bezahlen|paying bill restaurant|يدفع|Wir möchten gerne bezahlen.|إحنا عايزين نحاسب.",
+            "essen|person eating food|ياكل|Wir essen jeden Sonntag bei den Großeltern.|إحنا بناكل عند جدنا وجدتنا كل يوم حد.",
+            "trinken|person drinking water|يشرب|Vergessen Sie nicht, bei der Hitze viel zu trinken.|ماتنساش تشرب مية كتير في الحر ده."
+        ]
+    },
+    {
+        "id": "wetter", "name": "Wetter & Jahreszeiten", "icon": "fa-cloud-sun",
+        "words": [
+            "das Wetter|weather forecast icon|الطقس|Das Wetter in Deutschland ändert sich oft.|الطقس في ألمانيا بيتغير كتير.",
+            "die Sonne|bright sun sky|شمس|Die Sonne scheint heute den ganzen Tag.|الشمس طالعة طول اليوم النهاردة.",
+            "der Regen|raining weather|مطر|Nach dem Regen kommt die Sonne.|بعد المطر بتطلع الشمس.",
+            "der Schnee|snowing weather|تلج|Die Kinder spielen draußen im Schnee.|الأطفال بيلعبوا بره في التلج.",
+            "der Wind|wind blowing trees|هوا / ريح|Der Wind weht heute sehr stark.|الهوا شديد جداً النهاردة.",
+            "die Wolke|cloudy sky|سحابة|Der Himmel ist voller dunkler Wolken.|السما مليانة سحاب غامق.",
+            "der Sturm|storm lightning|عاصفة|Ein schwerer Sturm zieht auf.|في عاصفة قوية بتقرب.",
+            "der Blitz|lightning strike|برق|Der Blitz hat in einen Baum eingeschlagen.|البرق ضرب شجرة.",
+            "der Donner|thunderstorm sky|رعد|Hast du den Donner gerade gehört?|إنت سمعت صوت الرعد ده؟",
+            "der Nebel|foggy weather|شبورة|Bei Nebel muss man vorsichtig fahren.|لازم تسوق بالراحة في وقت الشبورة.",
+            "das Eis|ice cubes|تلج / جليد|Vorsicht, auf der Straße ist Eis!|خلي بالك، الشارع عليه جليد!",
+            "die Temperatur|weather thermometer|درجة الحرارة|Die Temperatur fällt heute auf null Grad.|درجة الحرارة هتنزل لصفر النهاردة.",
+            "der Grad|thermometer celsius|درجة مئوية|Wir haben heute 30 Grad im Schatten.|درجة الحرارة النهاردة 30 في الضل.",
+            "die Hitze|hot weather sun|حر|Ich kann diese Hitze nicht mehr ertragen.|أنا مش قادر أستحمل الحر ده.",
+            "die Kälte|cold freezing weather|برد|Zieh dich warm an gegen die Kälte.|إلبس تقيل عشان البرد.",
+            "der Frühling|spring season flowers|الربيع|Im Frühling blühen die Bäume wieder.|الشجر بيزهر تاني في الربيع.",
+            "der Sommer|summer season beach|الصيف|Der Sommer ist meine Lieblingsjahreszeit.|الصيف ده أكتر فصل بحبه.",
+            "der Herbst|autumn season leaves|الخريف|Im Herbst fallen die Blätter von den Bäumen.|ورق الشجر بيقع في الخريف.",
+            "der Winter|winter season snow|الشتاء|Der Winter in Russland ist sehr streng.|الشتا في روسيا قاسي جداً.",
+            "der Himmel|blue sky clouds|سما|Der Himmel ist heute strahlend blau.|السما زرقا وصافية النهاردة.",
+            "der Regenbogen|rainbow in sky|قوس قزح|Schau mal, ein wunderschöner Regenbogen!|بص كده، في قوس قزح شكله تحفة!",
+            "die Luft|fresh air nature|هوا|Die frische Luft am Morgen tut gut.|الهوا الفريش بتاع الصبح ده بيرد الروح.",
+            "der Wetterbericht|weather news tv|نشرة جوية|Der Wetterbericht meldet Regen für morgen.|النشرة الجوية بتقول في مطر بكرة.",
+            "sonnig|sunny weather|مشمس|Wir hoffen auf ein sonniges Wochenende.|إحنا بنتمنى ويك إند مشمس.",
+            "regnerisch|rainy weather|ممطر|Der April ist ein regnerischer Monat.|شهر أبريل ده شهر ممطر.",
+            "windig|windy weather|هوا شديد|Es ist zu windig, um an den Strand zu gehen.|الهوا شديد جداً مننفعش نروح الشط.",
+            "bewölkt|cloudy sky|مغيم|Heute bleibt es leider den ganzen Tag bewölkt.|النهاردة الجو هيفضل مغيم طول اليوم للأسف.",
+            "kalt|cold freezing person|ساقع|Mir ist kalt, kannst du das Fenster schließen?|أنا بردان، ممكن تقفل الشباك؟",
+            "heiß|hot sweating person|حر|Der Kaffee ist noch zu heiß zum Trinken.|القهوة لسة سخنة جداً مقدرش أشربها.",
+            "warm|warm sunny weather|دافي|Zieh dir eine warme Jacke an.|إلبس جاكيت يدَفّيك.",
+            "kühl|cool breeze weather|طراوة|Abends wird es im Sommer angenehm kühl.|الجو بيبقى طراوة وحلو بالليل في الصيف.",
+            "frieren|freezing person shivering|بردان / يرتجف|Ich friere, weil ich meine Handschuhe vergessen habe.|أنا بردان ومتلج عشان نسيت الجوانتي بتاعي.",
+            "scheinen|sun shining brightly|تشرق (الشمس)|Die Sonne scheint und die Vögel singen.|الشمس طالعة والعصافير بتغني.",
+            "regnen|raining outside|تمطر|Es fängt an zu regnen, wir sollten reingehen.|الجو بدأ يمطر، لازم ندخل جوة.",
+            "schneien|snowing outside|تتلج|Hoffentlich wird es an Weihnachten schneien.|يا ريت تشتي تلج في الكريسماس.",
+            "der Januar|january calendar|يناير|Mein Geburtstag ist im Januar.|عيد ميلادي في شهر يناير.",
+            "der Februar|february calendar|فبراير|Der Februar ist der kürzeste Monat des Jahres.|فبراير أقصر شهر في السنة.",
+            "der März|march calendar|مارس|Im März beginnt offiziell der Frühling.|الربيع بيبدأ رسمياً في شهر مارس.",
+            "der April|april calendar|أبريل|Der April macht, was er will.|أبريل بيعمل اللي هو عايزه (مثل ألماني عن تقلب الجو).",
+            "der Mai|may calendar|مايو|Wir machen einen Ausflug im Mai.|إحنا هنطلع رحلة في شهر مايو.",
+            "der Juni|june calendar|يونيو|Im Juni beginnen in vielen Ländern die Sommerferien.|الأجازة الصيفية بتبدأ في يونيو في بلاد كتير.",
+            "der Juli|july calendar|يوليو|Der Juli ist meistens der heißeste Monat.|يوليو غالباً بيبقى أحر شهر.",
+            "der August|august calendar|أغسطس|Im August fahren viele Deutsche ans Meer.|في أغسطس، ألمان كتير بيروحوا يصيفوا على البحر.",
+            "der September|september calendar|سبتمبر|Im September fängt die Schule wieder an.|المدارس بترجع تفتح تاني في سبتمبر.",
+            "der Oktober|october calendar|أكتوبر|Das Oktoberfest findet teilweise im Oktober statt.|مهرجان أكتوبر بيتعمل جزء منه في شهر أكتوبر.",
+            "der November|november calendar|نوفمبر|Der November ist oft sehr grau und regnerisch.|نوفمبر غالباً بيبقى شهر كئيب وممطر.",
+            "der Dezember|december calendar|ديسمبر|Im Dezember feiern wir Weihnachten.|إحنا بنحتفل بالكريسماس في ديسمبر.",
+            "der Monat|calendar month|شهر|Dieser Monat hat 31 Tage.|الشهر ده فيه 31 يوم.",
+            "das Jahr|calendar year|سنة|Nächstes Jahr möchte ich nach Japan reisen.|أنا عايز أسافر اليابان السنة الجاية.",
+            "die Jahreszeit|four seasons nature|فصل (من فصول السنة)|Der Sommer ist meine favorisierte Jahreszeit.|الصيف ده فصلي المفضل."
+        ]
+    },
+    {
+        "id": "hobbys", "name": "Hobbys & Freizeit", "icon": "fa-gamepad",
+        "words": [
+            "das Hobby|painting hobby|هواية|Mein größtes Hobby ist das Fotografieren.|أكبر هواية عندي هي التصوير.",
+            "die Freizeit|relaxing free time|وقت فراغ|In meiner Freizeit lese ich sehr gerne.|أنا بحب أقرا جداً في وقت فراغي.",
+            "der Fußball|soccer ball|كورة قدم|Spielt ihr heute Nachmittag Fußball?|هتلعبوا كورة قدم النهاردة العصر؟",
+            "der Sport|sports gym|رياضة|Sport hält den Körper gesund und fit.|الرياضة بتحافظ على صحة الجسم.",
+            "das Joggen|person jogging|جري|Joggen im Park macht den Kopf frei.|الجري في الجنينة بيصفي الدماغ.",
+            "schwimmen|person swimming|يعوم|Ich gehe jeden Sonntag schwimmen.|أنا بروح أعوم كل يوم حد.",
+            "das Schwimmbad|swimming pool|حمام سباحة|Im Sommer ist das Schwimmbad immer überfüllt.|حمام السباحة دايماً زحمة في الصيف.",
+            "das Fahrrad|bicycle|عجلة|Ich fahre mit dem Fahrrad zur Arbeit.|أنا بروح الشغل بالعجلة.",
+            "die Gitarre|acoustic guitar|جيتار|Er spielt sehr gut Gitarre.|هو بيلعب جيتار حلو أوي.",
+            "das Klavier|piano keyboard|بيانو|Meine Schwester übt jeden Tag Klavier.|أختي بتتدرب على البيانو كل يوم.",
+            "die Musik|listening to music headphones|مزيكا|Musik hilft mir beim Entspannen.|المزيكا بتساعدني أسترخي.",
+            "hören|person listening|يسمع|Hörst du gerne klassische Musik?|إنت بتحب تسمع مزيكا كلاسيك؟",
+            "das Buch|open reading book|كتاب|Dieses Buch ist unglaublich spannend.|الكتاب ده مشوق جداً.",
+            "lesen|person reading book|يقرا|Er liest jeden Abend vor dem Einschlafen.|هو بيقرا كل يوم بالليل قبل ما ينام.",
+            "die Bibliothek|library books|مكتبة|Ich leihe mir Bücher aus der Bibliothek aus.|أنا بستعير كتب من المكتبة.",
+            "das Kino|cinema theater|سينما|Lass uns am Wochenende ins Kino gehen.|يلا نروح السينما الويك إند ده.",
+            "der Film|movie film reel|فيلم|Das ist der beste Film, den ich je gesehen habe.|ده أحلى فيلم شوفته في حياتي.",
+            "sehen|person watching movie|يشوف|Ich sehe gerne Dokumentarfilme.|أنا بحب أتفرج على أفلام وثائقية.",
+            "das Theater|theater stage|مسرح|Das Theaterstück war ein großer Erfolg.|المسرحية دي كسرت الدنيا.",
+            "das Museum|museum building|متحف|Sonntags ist der Eintritt ins Museum oft frei.|دخول المتحف غالباً بيبقى ببلاش يوم الحد.",
+            "das Konzert|music concert stage|حفلة موسيقية|Das Konzert der Band war schnell ausverkauft.|تذاكر حفلة الباند خلصت بسرعة.",
+            "die Fotografie|camera photography|تصوير|Die Fotografie ist seine große Leidenschaft.|التصوير ده شغفه الكبير.",
+            "fotografieren|person taking photo|يصور|Ich fotografiere am liebsten die Natur.|أنا أكتر حاجة بحب أصورها هي الطبيعة.",
+            "das Spiel|board game|لعبة|Dieses Brettspiel dauert oft mehrere Stunden.|لعبة الطاولة دي بتاخد ساعات كتير.",
+            "spielen|people playing game|يلعب|Spielen wir eine Runde Schach?|تيجي نلعب دور شطرنج؟",
+            "das Videospiel|video game controller|فيديو جيم|Mein Bruder verbringt viel Zeit mit Videospielen.|أخويا بيقضي وقت طويل في ألعاب الفيديو.",
+            "der Computer|desktop computer|كمبيوتر|Ich sitze beruflich den ganzen Tag am Computer.|شغلي بيخليني أقعد قدام الكمبيوتر طول اليوم.",
+            "das Internet|internet web globe|إنترنت|Man findet viele Informationen im Internet.|ممكن تلاقي معلومات كتير على الإنترنت.",
+            "reisen|person traveling|يسافر|Reisen bildet und erweitert den Horizont.|السفر بيعلم ويوسع المدارك.",
+            "wandern|person hiking mountain|يتمشى / هايكنج|Wir wandern gerne in den Bergen.|إحنا بنحب نتمشى (نعمل هايكنج) في الجبال.",
+            "tanzen|people dancing|يرقص|Sie geht zweimal pro Woche tanzen.|هي بتروح ترقص مرتين في الأسبوع.",
+            "singen|person singing microphone|يغني|Er singt im Chor der Universität.|هو بيغني في كورال الجامعة.",
+            "malen|person painting canvas|يرسم (ألوان)|Das Kind malt ein Bild für seine Mutter.|الطفل بيرسم لوحة لأمه.",
+            "zeichnen|person drawing pencil|يرسم (رصاص)|Mit einem Bleistift kann man gut zeichnen.|ممكن ترسم حلو جداً بالقلم الرصاص.",
+            "kochen|person cooking food|يطبخ|Ich koche am Wochenende gerne für meine Freunde.|أنا بحب أطبخ لأصحابي في الويك إند.",
+            "backen|person baking cake|يخبز|Zu Weihnachten backen wir viele Plätzchen.|في الكريسماس إحنا بنخبز بسكويت كتير.",
+            "die Natur|nature forest|طبيعة|Wir müssen die Natur schützen.|إحنا لازم نحافظ على الطبيعة.",
+            "der Park|city park bench|حديقة عامة|Wir machen ein Picknick im Park.|إحنا هنعمل نزهة في الجنينة.",
+            "der Garten|home garden flowers|جنينة|Der Apfelbaum in unserem Garten trägt viele Früchte.|شجرة التفاح اللي في جنينتنا مطلعة ثمار كتير.",
+            "die Freunde|group of friends|أصحاب|Gute Freunde sind sehr wichtig im Leben.|الأصحاب الجدعان مهمين جداً في الحياة.",
+            "treffen|friends meeting|يقابل|Wann treffen wir uns morgen?|هنتقابل إمتى بكرة؟",
+            "spazieren|person walking park|يتمشى|Wir gehen eine halbe Stunde im Wald spazieren.|إحنا بنتمشى نص ساعة في الغابة.",
+            "der Ausflug|family road trip|رحلة / فسحة|Der Ausflug ans Meer war wunderschön.|الرحلة بتاعت البحر كانت تجنن.",
+            "das Ticket|entry ticket|تذكرة|Hast du schon das Ticket für das Spiel gekauft?|إنت اشتريت تذكرة الماتش ولا لسة؟",
+            "die Karte|playing cards|كوتشينة / خريطة|Wir spielen Karten bis spät in die Nacht.|إحنا بنلعب كوتشينة لحد وش الفجر.",
+            "der Verein|sports club team|نادي / جمعية|Ich bin Mitglied im örtlichen Sportverein.|أنا مشترك في نادي الرياضة بتاع المنطقة.",
+            "das Fitnessstudio|gym fitness center|جيم|Ich trainiere dreimal die Woche im Fitnessstudio.|أنا بتمرن 3 مرات في الأسبوع في الجيم.",
+            "trainieren|person working out gym|يتمرن|Die Mannschaft trainiert für das große Finale.|الفريق بيتمرن عشان الماتش النهائي.",
+            "laufen|person running|يجري|Sie läuft jeden Morgen fünf Kilometer.|هي بتجري 5 كيلو كل يوم الصبح.",
+            "reiten|person riding horse|يركب خيل|Reiten ist ein sehr teures Hobby.|ركوب الخيل ده هواية غالية جداً."
+        ]
+    },
+    {
+        "id": "reisen", "name": "Reisen & Hotel", "icon": "fa-plane-departure",
+        "words": [
+            "die Reise|traveling suitcase|سفر / رحلة|Die Reise nach Japan dauert sehr lange.|رحلة اليابان بتاخد وقت طويل جداً.",
+            "reisen|person traveling airplane|يسافر|Ich liebe es, in fremde Länder zu reisen.|أنا بعشق السفر لبلاد جديدة.",
+            "der Urlaub|beach vacation|أجازة|Endlich Urlaub, ich freue mich sehr darauf!|أخيراً أجازة، أنا مستنيها بفارغ الصبر!",
+            "das Hotel|hotel building|فندق|Wir haben ein sehr schönes Hotel am Strand gebucht.|إحنا حجزنا فندق حلو أوي على الشط.",
+            "die Reservierung|hotel reservation desk|حجز|Ich habe eine Reservierung auf den Namen Müller.|أنا عندي حجز باسم مولر.",
+            "buchen|booking hotel online|يحجز|Sie sollten den Flug rechtzeitig buchen.|المفروض تحجز الطيران بدري.",
+            "der Reisepass|passport document|باسبور|Zeigen Sie mir bitte Ihren Reisepass.|وريني الباسبور بتاعك لو سمحت.",
+            "das Visum|visa stamp passport|فيزا / تأشيرة|Für die USA benötigen Sie ein gültiges Visum.|إنت محتاج فيزا سارية عشان تسافر أمريكا.",
+            "der Koffer|travel suitcase|شنطة سفر|Mein Koffer ist viel zu schwer.|شنطة سفري تقيلة جداً.",
+            "die Tasche|bag|شنطة|Lass deine Tasche nicht unbeaufsichtigt.|ماتسيبش شنطتك من غير ما تخلي بالك منها.",
+            "das Gepäck|travel luggage|عفش / حقائب|Das Gepäck wird im Hotelzimmer abgestellt.|العفش هيتحط في أوضة الفندق.",
+            "der Flughafen|airport terminal|مطار|Wir müssen zwei Stunden vorher am Flughafen sein.|لازم نكون في المطار قبلها بساعتين.",
+            "das Flugzeug|airplane flying|طيارة|Das Flugzeug hebt pünktlich ab.|الطيارة هتطير في ميعادها بالظبط.",
+            "der Flug|airplane taking off|رحلة طيران|Guten Flug und kommen Sie sicher an!|رحلة طيران سعيدة وتوصل بالسلامة!",
+            "das Flugticket|airplane boarding pass|تذكرة طيران|Ich habe mein Flugticket zu Hause vergessen.|أنا نسيت تذكرة الطيران في البيت.",
+            "der Bahnhof|train station|محطة قطار|Ich hole dich am Bahnhof ab.|أنا هاجي أخدك من محطة القطر.",
+            "der Zug|train traveling|قطر|Der Zug nach Berlin fährt auf Gleis 3 ab.|قطر برلين هيتحرك من رصيف 3.",
+            "die Fahrkarte|train ticket|تذكرة سفر|Bitte entwerten Sie die Fahrkarte vor dem Einsteigen.|لو سمحت اختم التذكرة قبل ما تركب.",
+            "der Bus|city bus|أتوبيس|Wir nehmen den Bus in die Innenstadt.|إحنا هناخد الأتوبيس لوسط البلد.",
+            "das Auto|car driving|عربية|Wir fahren mit dem Auto in den Urlaub.|إحنا هنسافر الأجازة دي بالعربية.",
+            "die Autovermietung|car rental service|تأجير عربيات|Die Autovermietung befindet sich direkt am Flughafen.|مكتب تأجير العربيات موجود في المطار على طول.",
+            "das Taxi|yellow taxi cab|تاكسي|Bitte rufen Sie mir ein Taxi.|لو سمحت اطلب لي تاكسي.",
+            "die Haltestelle|bus stop sign|محطة / موقف|Die nächste Haltestelle ist der Hauptbahnhof.|المحطة الجاية هي محطة القطار الرئيسية.",
+            "der Fahrplan|train schedule board|جدول مواعيد|Im Fahrplan steht, dass der Zug um 8 Uhr ankommt.|الجدول بيقول إن القطر هيوصل الساعة 8.",
+            "die Abfahrt|train departing|انطلاق|Die Abfahrt verzögert sich um zehn Minuten.|التحرك هيتأخر 10 دقايق.",
+            "die Ankunft|train arriving|وصول|Die Ankunft in München ist für 14 Uhr geplant.|الوصول لميونخ متحدد له الساعة 2 الضهر.",
+            "die Verspätung|delayed train board|تأخير|Der Zug hat leider eine halbe Stunde Verspätung.|للاسف القطر متأخر نص ساعة.",
+            "der Rezeptionist|hotel receptionist|موظف استقبال|Der Rezeptionist gibt uns die Zimmerschlüssel.|موظف الاستقبال هيدينا مفاتيح الأوضة.",
+            "das Zimmer|hotel room interior|أوضة|Das Zimmer hat einen wunderschönen Balkon.|الأوضة فيها بلكونة تحفة.",
+            "der Schlüssel|door key|مفتاح|Haben Sie den Schlüssel für die Minibar?|معاك مفتاح التلاجة الصغيرة؟",
+            "die Schlüsselkarte|hotel key card|كارت الباب|Die Schlüsselkarte öffnet auch den Fitnessraum.|كارت الباب ده بيفتح كمان الجيم.",
+            "das Einzelzimmer|single bed hotel room|أوضة سنجل|Ich habe ein Einzelzimmer für eine Nacht gebucht.|أنا حجزت أوضة سنجل لليلة واحدة.",
+            "das Doppelzimmer|double bed hotel room|أوضة دبل|Das Doppelzimmer kostet 100 Euro pro Nacht.|الأوضة الدبل بـ 100 يورو في الليلة.",
+            "das Badezimmer|bathroom interior|حمام|Das Badezimmer ist sehr sauber und modern.|الحمام نضيف جداً ومودرن.",
+            "die Dusche|shower head running water|دش|Nach dem langen Flug brauche ich eine heiße Dusche.|بعد رحلة الطيران الطويلة دي محتاج دش سخن.",
+            "das Bett|comfortable bed|سرير|Das Bett in diesem Hotel ist sehr bequem.|السرير في الفندق ده مريح جداً.",
+            "das Frühstück|hotel breakfast buffet|فطار|Das Frühstück ist im Preis inbegriffen.|الفطار شامل السعر.",
+            "die Klimaanlage|air conditioner|تكييف|Die Klimaanlage funktioniert nicht richtig.|التكييف مش شغال كويس.",
+            "das WLAN|wifi router|واي wifi|Wie lautet das Passwort für das WLAN?|باسورد الواي فاي إيه؟",
+            "der Aufzug|elevator doors|أسانسير|Der Aufzug ist leider außer Betrieb.|للأسف الأسانسير عطلان.",
+            "die Sehenswürdigkeit|famous tourist attraction|معلم سياحي|Der Eiffelturm ist die bekannteste Sehenswürdigkeit in Paris.|برج إيفل ده أشهر معلم سياحي في باريس.",
+            "der Stadtplan|city map|خريطة المدينة|Können Sie mir auf dem Stadtplan zeigen, wo wir sind?|ممكن توريني على الخريطة إحنا فين؟",
+            "der Reiseführer|tour guide person|مرشد سياحي|Der Reiseführer erzählt uns die Geschichte der Stadt.|المرشد السياحي بيحكي لنا تاريخ المدينة.",
+            "das Zentrum|city center downtown|وسط البلد|Wir schlendern gerne durch das Zentrum der Stadt.|إحنا بنحب نتمشى في وسط البلد.",
+            "der Strand|sandy beach|شط|Wir verbringen den ganzen Tag am Strand.|إحنا بنقضي طول اليوم على الشط.",
+            "das Meer|ocean waves|بحر|Das Wasser im Meer ist heute sehr warm.|مية البحر دافية جداً النهاردة.",
+            "die Berge|mountain landscape|جبال|Wir machen im Winter Urlaub in den Bergen.|إحنا بنقضي أجازة الشتا في الجبال.",
+            "der See|lake nature|بحيرة|Am See kann man ein Boot mieten.|ممكن تأجر مركب في البحيرة.",
+            "die Postkarte|travel postcard|كارت بوستال|Ich schreibe eine Postkarte an meine Großeltern.|أنا بكتب كارت بوستال لجدو وتيتا.",
+            "das Souvenir|travel souvenir shop|هدية تذكارية|Ich kaufe ein Souvenir als Erinnerung an den Urlaub.|أنا هشتري هدية تذكارية تفكرني بالأجازة."
+        ]
+    },
+    {
+        "id": "einkaufen", "name": "Einkaufen & Geld", "icon": "fa-shopping-cart",
+        "words": [
+            "das Einkaufen|grocery shopping|تسوق|Das Einkaufen am Samstag ist immer sehr stressig.|التسوق يوم السبت دايماً بيبقى زحمة ومتعب.",
+            "einkaufen|person shopping supermarket|يتسوق|Ich muss heute noch einkaufen gehen.|أنا لازم أنزل أتسوق النهاردة.",
+            "der Supermarkt|supermarket aisle|سوبر ماركت|Der Supermarkt schließt um 22 Uhr.|السوبر ماركت بيقفل الساعة 10 بالليل.",
+            "das Geschäft|store front|محل|Dieses Geschäft hat eine große Auswahl an Kleidung.|المحل ده عنده تشكيلة هدوم كبيرة.",
+            "der Laden|small shop front|دكان / محل|Der kleine Laden an der Ecke verkauft frisches Gemüse.|الدكان الصغير اللي على الناصية بيبيع خضار طازة.",
+            "die Kasse|cash register|كاشير / خزنة|Bitte zahlen Sie an der Kasse dort drüben.|لو سمحت حاسب عند الكاشير اللي هناك ده.",
+            "der Kassierer|cashier working|الكاشير (موظف)|Der Kassierer gibt mir das Rückgeld.|موظف الكاشير إداني الباقي.",
+            "der Kunde|customer shopping|زبون|Der Kunde ist König, sagt man oft.|دايماً بيقولوا الزبون دايماً على حق (الزبون ملك).",
+            "die Kundin|female customer shopping|زبونة|Die Kundin probiert ein rotes Kleid an.|الزبونة بتقيس فستان أحمر.",
+            "der Einkaufswagen|shopping cart supermarket|عربية تسوق|Ich brauche eine Münze für den Einkaufswagen.|أنا محتاج عملة معدنية عشان عربية التسوق.",
+            "der Einkaufskorb|shopping basket supermarket|سلة تسوق|Für die paar Dinge reicht ein Einkaufskorb.|سلة التسوق هتكفي الشويتين دول.",
+            "die Einkaufstasche|shopping bag|شنطة تسوق|Hast du deine eigene Einkaufstasche mitgebracht?|إنت جبت شنطة التسوق بتاعتك معاك؟",
+            "das Geld|money banknotes|فلوس|Ich habe heute nicht genug Geld dabei.|أنا مش معايا فلوس كفاية النهاردة.",
+            "der Euro|euro coin currency|يورو|Das kostet genau einen Euro.|ده تمنه يورو بالظبط.",
+            "die Cent|euro cent coin|سنت|Mir fehlen noch fünfzig Cent.|ناقص لي خمسين سنت.",
+            "der Preis|price tag|سعر|Der Preis für dieses Auto ist zu hoch.|سعر العربية دي عالي أوي.",
+            "kosten|price tag cost|يكلف|Wie viel kosten diese Schuhe?|الجزمة دي بكام؟",
+            "teuer|expensive luxury car|غالي|Wohnen in München ist sehr teuer.|العيشة في ميونخ غالية جداً.",
+            "billig|cheap discount sign|رخيص|Das T-Shirt war sehr billig im Angebot.|التيشيرت ده كان رخيص جداً في العرض.",
+            "der Rabatt|discount percentage sign|خصم|Wir geben heute 20 Prozent Rabatt auf alles.|إحنا عاملين خصم 20 في المية على كل حاجة النهاردة.",
+            "das Sonderangebot|special offer sign|عرض خاص|Diese Jacke ist ein tolles Sonderangebot.|الجاكيت ده عليه عرض خاص لقطة.",
+            "die Kreditkarte|credit card|فيزا / كريدت كارد|Kann ich hier mit Kreditkarte bezahlen?|ممكن أحاسب هنا بالكريدت كارد؟",
+            "die EC-Karte|debit card|كارت بنك|Ich zahle lieber mit meiner EC-Karte.|أنا بفضل أحاسب بكارت البنك بتاعي.",
+            "das Bargeld|cash money bills|كاش|Haben Sie etwas Bargeld für den Bäcker?|معاك كاش عشان المخبز؟",
+            "zahlen|paying money cash|يدفع (كاش)|Zahlen Sie bar oder mit Karte?|هتدفع كاش ولا كارت؟",
+            "bezahlen|paying with card|يحاسب / يدفع|Ich möchte die Rechnung bitte bezahlen.|أنا عايز أحاسب على الفاتورة لو سمحت.",
+            "die Quittung|receipt paper|إيصال|Brauchen Sie eine Quittung für Ihre Unterlagen?|محتاج إيصال عشان أوراقك؟",
+            "der Kassenbon|supermarket receipt paper|فاتورة|Werfen Sie den Kassenbon nicht weg, falls Sie umtauschen möchten.|ماترميش الفاتورة عشان لو حبيت تبدل الحاجة.",
+            "die Bank|bank building|بنك|Die Bank hat am Wochenende geschlossen.|البنك بيبقى قافل في الويك إند.",
+            "das Bankkonto|bank account app|حساب بنكي|Ich möchte ein neues Bankkonto eröffnen.|أنا عايز أفتح حساب بنكي جديد.",
+            "der Geldautomat|atm machine|ماكينة ATM|Wo ist der nächste Geldautomat?|فين أقرب ماكينة ATM؟",
+            "abheben|withdrawing money atm|يسحب (فلوس)|Ich muss noch Geld am Automaten abheben.|أنا لازم أسحب فلوس من الماكينة.",
+            "sparen|saving money piggy bank|يحوش|Wir sparen für ein neues Auto.|إحنا بنحوش عشان نجيب عربية جديدة.",
+            "wechseln|currency exchange money|يغير عملة|Ich möchte Euro in Dollar wechseln.|أنا عايز أغير يورو لدولار.",
+            "die Geldbörse|leather wallet money|محفظة|Ich habe meine Geldbörse zu Hause vergessen.|أنا نسيت محفظتي في البيت.",
+            "der Geldbeutel|leather wallet|بوك / محفظة|Pass auf deinen Geldbeutel in der Menge auf.|خلي بالك من محفظتك في الزحمة.",
+            "die Abteilung|department store section|قسم|Die Spielzeugabteilung ist im dritten Stock.|قسم اللعب في الدور التالت.",
+            "die Kleidung|clothing rack store|هدوم|Sie gibt viel Geld für Kleidung aus.|هي بتصرف فلوس كتير على الهدوم.",
+            "die Schuhe|shoes store|جزم|Diese Schuhe drücken ein bisschen.|الجزمة دي ضيقة شوية.",
+            "die Lebensmittel|grocery store food|مواد غذائية|Lebensmittel sind in den letzten Jahren teurer geworden.|السلع الغذائية غليت في السنين اللي فاتت.",
+            "die Elektronik|electronics store|أجهزة إلكترونية|In diesem Markt gibt es günstige Elektronik.|في الماركت ده بيبيع أجهزة إلكترونية رخيصة.",
+            "die Garantie|warranty certificate document|ضمان|Auf dieses Gerät haben Sie zwei Jahre Garantie.|الجهاز ده عليه ضمان سنتين.",
+            "umtauschen|exchanging item store|يبدل / يستبدل|Ich möchte dieses Hemd umtauschen, es ist zu klein.|أنا عايز أبدل القميص ده، مقاسه صغير عليا.",
+            "die Rückgabe|returning item store|ترجيع / استرجاع|Die Rückgabe ist innerhalb von 14 Tagen möglich.|ممكن ترجع الحاجة خلال 14 يوم.",
+            "der Verkäufer|salesman store|بياع|Der Verkäufer hat mich sehr gut beraten.|البياع نصحني بشكل كويس جداً.",
+            "die Verkäuferin|saleswoman store|بياعة|Fragen Sie die Verkäuferin nach einer anderen Größe.|اسأل البياعة على مقاس تاني.",
+            "öffnen|open sign store|يفتح|Wann öffnen die Geschäfte am Samstag?|المحلات بتفتح إمتى يوم السبت؟",
+            "schließen|closed sign store|يقفل|Wir schließen in fünf Minuten.|إحنا هنقفل كمان 5 دقايق.",
+            "die Öffnungszeiten|store opening hours sign|مواعيد العمل|Die Öffnungszeiten stehen an der Tür.|مواعيد العمل مكتوبة على الباب.",
+            "online einkaufen|online shopping smartphone|تسوق أونلاين|Viele Menschen bevorzugen es, online einzukaufen.|ناس كتير بتفضل تتسوق أونلاين."
+        ]
+    }
+];
+        
+        let studiedWords = JSON.parse(localStorage.getItem('studiedWords') || '[]');
+        let learnedWords = JSON.parse(localStorage.getItem('learnedWords') || '[]');
+
+        function updateCounts() {
+            document.getElementById('studied-count').textContent = studiedWords.length;
+            document.getElementById('learned-count').textContent = learnedWords.length;
+        }
+
+        function createCardElement(item) {
+            const parts = item.split('|');
+            const wordFull = parts[0];
+            const imgKey = parts[1];
+            const arabicTrans = parts[2];
+            const germanSentence = parts[3] || '';
+            const arabicSentence = parts[4] || '';
+            
+            let article = '';
+            let mainWord = wordFull;
+            let articleClass = '';
+
+            if (wordFull.startsWith('der ')) { article = 'der'; mainWord = wordFull.substring(4); articleClass = 'article-der'; }
+            else if (wordFull.startsWith('die ')) { article = 'die'; mainWord = wordFull.substring(4); articleClass = 'article-die'; }
+            else if (wordFull.startsWith('das ')) { article = 'das'; mainWord = wordFull.substring(4); articleClass = 'article-das'; }
+
+            const articleHtml = article ? `<span class="article-pill ${articleClass} de-text">${article}</span>` : '';
+            
+            const encodedKey = encodeURIComponent(imgKey + " photography");
+            const imgUrl = `https://tse2.mm.bing.net/th?q=${encodedKey}&w=200&h=200&c=7&rs=1&p=0&dpr=1&pid=1.7`;
+
+            const isStudied = studiedWords.includes(wordFull);
+            const isLearned = learnedWords.includes(wordFull);
+            const safeWord = wordFull.replace(/'/g, "\\'");
+            const idSafeWord = wordFull.replace(/"/g, "&quot;");
+
+            const card = document.createElement('div');
+            card.className = 'word-card';
+            card.setAttribute('data-word-id', idSafeWord);
+            card.onclick = function() { playSound(this); };
+            
+            card.innerHTML = `
+                <div class="card-actions">
+                    <button class="action-btn double-check-btn ${isLearned ? 'active-learned' : ''}" title="تم التعلم (إخفاء من الرئيسية)" onclick="toggleLearned(event, this, '${safeWord}')">
+                        <i class="fas fa-check-double"></i>
+                    </button>
+                    <button class="action-btn check-btn ${isStudied ? 'active-check' : ''}" title="حفظ الكلمة للمراجعة" onclick="toggleStudied(event, this, '${safeWord}')">
+                        <i class="fas fa-check"></i>
+                    </button>
+                    <button class="action-btn sentence-btn" title="عرض مثال" onclick="toggleSentence(event, this)">
+                        <i class="fas fa-quote-right"></i>
+                    </button>
+                    <button class="action-btn translate-btn" title="الترجمة (مصري)" onclick="toggleTranslation(event, this)">
+                        <i class="fas fa-language"></i>
+                    </button>
+                    <button class="action-btn sound-btn" title="استماع">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                </div>
+                <img src="${imgUrl}" alt=" " class="card-icon-img" loading="lazy" />
+                ${articleHtml}
+                <div class="word-text de-text" data-speak="${idSafeWord}">${mainWord}</div>
+                <div class="german-sentence de-text" style="display: none;" data-speak="${germanSentence.replace(/"/g, '&quot;')}">${germanSentence}</div>
+                <div class="arabic-translation" style="display: none;">
+                    <div class="trans-word">${arabicTrans}</div>
+                    <div class="trans-sentence" style="display: none;">${arabicSentence}</div>
+                </div>
+            `;
+            return card;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const navContainer = document.getElementById('category-nav');
+            const mainContainer = document.getElementById('main-content');
+            
+            updateCounts();
+
+            dictionary.forEach((category, index) => {
+                const btn = document.createElement('button');
+                btn.className = `cat-btn ${index === 0 ? 'active' : ''}`;
+                btn.dataset.target = category.id;
+                btn.innerHTML = `<i class="fas ${category.icon}"></i> <span class="de-text">${category.name}</span>`;
+                btn.onclick = () => {
+                    document.getElementById(category.id).scrollIntoView({ behavior: 'smooth' });
+                };
+                navContainer.appendChild(btn);
+
+                const section = document.createElement('section');
+                section.id = category.id;
+                section.className = 'category-section';
+                
+                const title = document.createElement('h2');
+                title.className = 'category-title de-text';
+                title.innerHTML = `<i class="fas ${category.icon}"></i> ${category.name}`;
+                section.appendChild(title);
+
+                const grid = document.createElement('div');
+                grid.className = 'cards-grid';
+
+                category.words.forEach(item => {
+                    const card = createCardElement(item);
+                    if (learnedWords.includes(item.split('|')[0])) {
+                        card.style.display = 'none'; // Hide learned words from main page
+                        card.classList.add('hidden-learned');
+                    }
+                    grid.appendChild(card);
+                });
+
+                section.appendChild(grid);
+                mainContainer.appendChild(section);
+            });
+
+            const themeBtn = document.getElementById('theme-toggle');
+            const root = document.documentElement;
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                root.setAttribute('data-theme', 'dark');
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+
+            themeBtn.addEventListener('click', () => {
+                const currentTheme = root.getAttribute('data-theme');
+                if (currentTheme === 'dark') {
+                    root.removeAttribute('data-theme');
+                    themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    root.setAttribute('data-theme', 'dark');
+                    themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+
+            const sections = document.querySelectorAll('.category-section');
+            const navButtons = document.querySelectorAll('.cat-btn');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 250) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.target === current) {
+                        btn.classList.add('active');
+                        const navWrapper = document.getElementById('category-nav');
+                        const scrollLeft = (btn.offsetLeft - navWrapper.offsetWidth / 2) + (btn.offsetWidth / 2);
+                        navWrapper.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+
+        function scrollNav(amount) {
+            const nav = document.getElementById('category-nav');
+            if(getComputedStyle(nav).direction === 'rtl') {
+                nav.scrollBy({ left: -amount, behavior: 'smooth' });
+            } else {
+                nav.scrollBy({ left: amount, behavior: 'smooth' });
+            }
+        }
+
+        // FIND CARD HELPER
+        function findMainCard(wordFull) {
+            const cards = Array.from(document.querySelectorAll('#main-content .word-card'));
+            return cards.find(c => c.getAttribute('data-word-id') === wordFull);
+        }
+
+        function toggleStudied(event, btn, wordFull) {
+            event.stopPropagation();
+            const index = studiedWords.indexOf(wordFull);
+            if (index > -1) {
+                studiedWords.splice(index, 1);
+                btn.classList.remove('active-check');
+            } else {
+                studiedWords.push(wordFull);
+                btn.classList.add('active-check');
+                btn.classList.add('anim-pop');
+                setTimeout(() => btn.classList.remove('anim-pop'), 300);
+            }
+            localStorage.setItem('studiedWords', JSON.stringify(studiedWords));
+            updateCounts();
+        }
+
+        function toggleLearned(event, btn, wordFull) {
+            event.stopPropagation();
+            const index = learnedWords.indexOf(wordFull);
+            const isModalCard = btn.closest('.modal-overlay') !== null;
+            
+            if (index > -1) {
+                // Un-learn
+                learnedWords.splice(index, 1);
+                btn.classList.remove('active-learned');
+                
+                // Show in main DOM again
+                const mainCard = findMainCard(wordFull);
+                if (mainCard) {
+                    mainCard.style.display = 'flex';
+                    mainCard.classList.remove('hidden-learned');
+                    const mainBtn = mainCard.querySelector('.double-check-btn');
+                    if (mainBtn) mainBtn.classList.remove('active-learned');
+                }
+                
+                if (isModalCard) {
+                    const modalGrid = document.getElementById('learned-grid');
+                    const card = btn.closest('.word-card');
+                    card.remove();
+                    if (learnedWords.length === 0) {
+                        modalGrid.innerHTML = '<div class="empty-modal"><i class="fas fa-box-open" style="font-size: 3rem; color: var(--border)"></i><span>لم تنجز أي كلمات بعد.</span></div>';
+                    }
+                }
+                
+            } else {
+                // Learn
+                learnedWords.push(wordFull);
+                btn.classList.add('active-learned');
+                
+                const card = btn.closest('.word-card');
+                
+                if (!isModalCard) {
+                    // Animate hide from main content
+                    card.style.transform = 'scale(0.8)';
+                    card.style.opacity = '0';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                        card.style.transform = '';
+                        card.style.opacity = '';
+                        card.classList.add('hidden-learned');
+                    }, 300);
+                }
+            }
+            
+            localStorage.setItem('learnedWords', JSON.stringify(learnedWords));
+            updateCounts();
+        }
+
+        function openStudiedModal() {
+            const grid = document.getElementById('studied-grid');
+            grid.innerHTML = '';
+            
+            if (studiedWords.length === 0) {
+                grid.innerHTML = '<div class="empty-modal"><i class="fas fa-box-open" style="font-size: 3rem; color: var(--border)"></i><span>لم تقم بحفظ أي كلمات بعد. اضغط على علامة (صح 1) للحفظ.</span></div>';
+            } else {
+                const allWords = dictionary.flatMap(cat => cat.words);
+                const studiedItems = allWords.filter(item => studiedWords.includes(item.split('|')[0]));
+                
+                studiedItems.forEach(item => {
+                    const card = createCardElement(item);
+                    grid.appendChild(card);
+                });
+            }
+            
+            document.getElementById('studied-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeStudiedModal() {
+            document.getElementById('studied-modal').classList.remove('active');
+            document.body.style.overflow = ''; 
+            
+            // Sync check buttons
+            document.querySelectorAll('#main-content .check-btn').forEach(btn => {
+                const card = btn.closest('.word-card');
+                if(!card) return;
+                const wordFull = card.getAttribute('data-word-id');
+                if(studiedWords.includes(wordFull)) btn.classList.add('active-check');
+                else btn.classList.remove('active-check');
+            });
+        }
+
+        function openLearnedModal() {
+            const grid = document.getElementById('learned-grid');
+            grid.innerHTML = '';
+            
+            if (learnedWords.length === 0) {
+                grid.innerHTML = '<div class="empty-modal"><i class="fas fa-box-open" style="font-size: 3rem; color: var(--border)"></i><span>لم تنجز أي كلمات بعد. اضغط على علامة (صحين) لإخفاء الكلمات هنا.</span></div>';
+            } else {
+                const allWords = dictionary.flatMap(cat => cat.words);
+                const learnedItems = allWords.filter(item => learnedWords.includes(item.split('|')[0]));
+                
+                learnedItems.forEach(item => {
+                    const card = createCardElement(item);
+                    grid.appendChild(card);
+                });
+            }
+            
+            document.getElementById('learned-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLearnedModal() {
+            document.getElementById('learned-modal').classList.remove('active');
+            document.body.style.overflow = ''; 
+        }
+
+        function toggleSentence(event, btn) {
+            event.stopPropagation();
+            const card = btn.closest('.word-card');
+            const sentenceDiv = card.querySelector('.german-sentence');
+            const transSentenceDiv = card.querySelector('.trans-sentence');
+            const transDiv = card.querySelector('.arabic-translation');
+            
+            if (sentenceDiv.style.display === 'none') {
+                sentenceDiv.style.display = 'block';
+                btn.classList.add('active-btn');
+                if (transDiv.style.display === 'block') {
+                    transSentenceDiv.style.display = 'block';
+                }
+            } else {
+                sentenceDiv.style.display = 'none';
+                btn.classList.remove('active-btn');
+                transSentenceDiv.style.display = 'none';
+            }
+        }
+
+        function toggleTranslation(event, btn) {
+            event.stopPropagation(); 
+            const card = btn.closest('.word-card');
+            const transDiv = card.querySelector('.arabic-translation');
+            const transSentenceDiv = card.querySelector('.trans-sentence');
+            const sentenceDiv = card.querySelector('.german-sentence');
+            
+            if (transDiv.style.display === 'none') {
+                transDiv.style.display = 'block';
+                btn.classList.add('active-btn');
+                if (sentenceDiv.style.display === 'block') {
+                    transSentenceDiv.style.display = 'block';
+                }
+            } else {
+                transDiv.style.display = 'none';
+                btn.classList.remove('active-btn');
+                transSentenceDiv.style.display = 'none';
+            }
+        }
+
+        function playSound(cardElement) {
+            cardElement.classList.add('anim-pop');
+            setTimeout(() => cardElement.classList.remove('anim-pop'), 300);
+
+            if (!('speechSynthesis' in window)) {
+                alert("عذراً، متصفحك لا يدعم خاصية النطق الصوتي.");
+                return;
+            }
+            
+            window.speechSynthesis.cancel();
+            
+            const sentenceDiv = cardElement.querySelector('.german-sentence');
+            let textToSpeak = '';
+            
+            if (sentenceDiv && sentenceDiv.style.display === 'block') {
+                textToSpeak = sentenceDiv.getAttribute('data-speak');
+            } else {
+                textToSpeak = cardElement.getAttribute('data-word-id');
+            }
+
+            const utterance = new SpeechSynthesisUtterance(textToSpeak);
+            utterance.lang = 'de-DE'; 
+            utterance.rate = 0.85; 
+            
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+</html>
